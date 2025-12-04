@@ -2,7 +2,7 @@ cask "pcp-perf" do
   version "7.0.4-1"
   sha256 "fba2444517bdafa0d66399456328a31509dedc83859bb81e6ee594246f3fd6ef"
 
-  url "https://github.com/performancecopilot/pcp/releases/download/#{version.major_minor_patch}/pcp-#{version}.dmg",
+  url "https://github.com/performancecopilot/pcp/releases/download/#{version.sub(/-\d+$/, '')}/pcp-#{version}.dmg",
       verified: "github.com/performancecopilot/pcp/"
   name "Performance Co-Pilot"
   desc "System performance analysis toolkit"
