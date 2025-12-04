@@ -15,13 +15,13 @@ cask "pcp-perf" do
 
   pkg "pcp-#{version}.pkg"
 
-  uninstall pkgutil:   "io.pcp.performancecopilot",
-            launchctl: [
+  uninstall launchctl: [
               "io.pcp.pmcd",
               "io.pcp.pmie",
               "io.pcp.pmlogger",
               "io.pcp.pmproxy",
-            ]
+            ],
+            pkgutil:   "io.pcp.performancecopilot"
 
   caveats <<~EOS
     PCP has been installed with the following services:
