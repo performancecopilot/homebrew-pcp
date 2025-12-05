@@ -15,19 +15,10 @@ cask "pcp-perf" do
 
   pkg "pcp-#{version}.pkg"
 
-  uninstall launchctl: [
-              "io.pcp.pmcd",
-              "io.pcp.pmie",
-              "io.pcp.pmlogger",
-              "io.pcp.pmproxy",
-            ],
-            pkgutil:   "io.pcp.performancecopilot",
-            delete:    [
-              "/Library/LaunchDaemons/io.pcp.pmcd.plist",
-              "/Library/LaunchDaemons/io.pcp.pmie.plist",
-              "/Library/LaunchDaemons/io.pcp.pmlogger.plist",
-              "/Library/LaunchDaemons/io.pcp.pmproxy.plist",
-            ]
+  uninstall script: {
+              executable: "/usr/local/libexec/pcp/bin/uninstall-pcp",
+              sudo:       true,
+            }
 
   zap script: {
         executable: "/usr/local/libexec/pcp/bin/uninstall-pcp",
