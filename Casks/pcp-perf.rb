@@ -17,14 +17,9 @@ cask "pcp-perf" do
 
   uninstall script: {
               executable: "/usr/local/libexec/pcp/bin/uninstall-pcp",
+              args:       ["--force"],
               sudo:       true,
             }
-
-  zap script: {
-        executable: "/usr/local/libexec/pcp/bin/uninstall-pcp",
-        args:       ["--force"],
-        sudo:       true,
-      }
 
   caveats <<~EOS
     PCP has been installed with the following services:
