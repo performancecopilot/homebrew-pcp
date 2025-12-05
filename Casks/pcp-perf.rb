@@ -21,7 +21,19 @@ cask "pcp-perf" do
               "io.pcp.pmlogger",
               "io.pcp.pmproxy",
             ],
-            pkgutil:   "io.pcp.performancecopilot"
+            pkgutil:   "io.pcp.performancecopilot",
+            delete:    [
+              "/Library/LaunchDaemons/io.pcp.pmcd.plist",
+              "/Library/LaunchDaemons/io.pcp.pmie.plist",
+              "/Library/LaunchDaemons/io.pcp.pmlogger.plist",
+              "/Library/LaunchDaemons/io.pcp.pmproxy.plist",
+            ]
+
+  zap trash: [
+        "/etc/pcp",
+        "/var/lib/pcp",
+        "/var/log/pcp",
+      ]
 
   caveats <<~EOS
     PCP has been installed with the following services:

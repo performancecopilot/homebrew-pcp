@@ -46,15 +46,49 @@ PCP installs several system services that start automatically:
 - Data directory: `/var/lib/pcp/`
 - Log files: `/var/log/pcp/`
 
-## Uninstallation
+## Uninstalling
 
-To uninstall PCP:
+### Standard Uninstall
+To uninstall PCP while preserving configuration and log files:
 
 ```bash
-brew uninstall --cask pcp-perf
+brew uninstall pcp-perf
 ```
 
-This will remove the PCP package and stop all associated services.
+This will:
+- Stop and remove all PCP services (pmcd, pmie, pmlogger, pmproxy)
+- Remove the installed package
+- Leave configuration files in /etc/pcp/ intact
+- Leave data files in /var/lib/pcp/ intact
+- Leave log files in /var/log/pcp/ intact
+
+### Complete Uninstall
+
+To completely remove PCP including all configuration and data files:
+
+```bash
+brew uninstall --zap pcp-perf
+```
+
+This performs a standard uninstall plus removal of all configuration, data, and log directories.
+
+### Manual .pkg Uninstall
+
+If you installed PCP using the .pkg installer (not Homebrew), you can use the bundled uninstall script:
+
+**Standard Uninstall (preserves config/log files):**
+```bash
+sudo /usr/local/libexec/pcp/bin/uninstall-pcp
+```
+
+This will prompt for confirmation and remove PCP, leaving configuration and log files in place.
+
+**Complete Uninstall (removes everything):**
+```bash
+sudo /usr/local/libexec/pcp/bin/uninstall-pcp --force
+```
+
+This skips the confirmation prompt and removes all PCP files including configuration, data, and logs.
 
 ## For Maintainers
 
