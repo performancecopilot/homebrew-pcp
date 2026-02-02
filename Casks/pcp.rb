@@ -1,4 +1,4 @@
-cask "pcp-perf" do
+cask "pcp" do
   version "7.0.4-1"
   sha256 "fba2444517bdafa0d66399456328a31509dedc83859bb81e6ee594246f3fd6ef"
 
