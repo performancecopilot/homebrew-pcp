@@ -7,14 +7,14 @@ This is a custom Homebrew tap for installing [Performance Co-Pilot (PCP)](https:
 To install PCP using this tap:
 
 ```bash
-brew tap performancecopilot/performancecopilot
-brew install --cask pcp-perf
+brew tap performancecopilot/pcp
+brew install --cask pcp
 ```
 
 Or install directly without tapping first:
 
 ```bash
-brew install --cask performancecopilot/performancecopilot/pcp-perf
+brew install --cask performancecopilot/pcp/pcp
 ```
 
 ## About Performance Co-Pilot
@@ -51,7 +51,7 @@ PCP installs several system services that start automatically:
 To uninstall PCP:
 
 ```bash
-brew uninstall pcp-perf
+brew uninstall pcp
 ```
 
 This will completely remove PCP including all services, packages, configuration files, data, and logs.
@@ -108,20 +108,20 @@ When a new version of PCP is released, follow these steps to update the cask:
    shasum -a 256 pcp-X.Y.Z-B.dmg
    ```
 
-3. **Update the cask file** (`Casks/pcp-perf.rb`):
+3. **Update the cask file** (`Casks/pcp.rb`):
    - Update the `version` field to include both version and build: `X.Y.Z-B`
    - Update the `sha256` field with the calculated checksum
    - Example: For release 7.0.5 with build 2, use `version "7.0.5-2"`
 
 4. **Test locally** before pushing:
    ```bash
-   brew reinstall --cask pcp-perf
+   brew reinstall --cask pcp
    ```
 
 5. **Commit and push changes**:
    ```bash
-   git add Casks/pcp-perf.rb
-   git commit -m "Update pcp-perf to version X.Y.Z-B"
+   git add Casks/pcp.rb
+   git commit -m "Update pcp to version X.Y.Z-B"
    git push
    ```
 
@@ -131,13 +131,13 @@ To test local changes before publishing:
 
 ```bash
 # Tap the local repository
-brew tap --force performancecopilot/performancecopilot /Users/psmith/dev/pcp/brew-pcp
+brew tap --force performancecopilot/pcp /Users/psmith/dev/pcp/brew-pcp
 
 # Install from local tap
-brew install --cask pcp-perf
+brew install --cask pcp
 
 # Verify installation
-brew list --cask pcp-perf
+brew list --cask pcp
 ```
 
 ### Cask Audit
@@ -145,12 +145,12 @@ brew list --cask pcp-perf
 To check the cask for issues:
 
 ```bash
-brew audit --cask --online Casks/pcp-perf.rb
+brew audit --cask --online Casks/pcp.rb
 ```
 
 ## Why a Custom Tap?
 
-The name `pcp` is already taken in Homebrew by an unrelated package. This custom tap uses the name `pcp-perf` to distinguish Performance Co-Pilot while maintaining a clear connection to the project.
+The name `pcp` is already taken in Homebrew by an unrelated package. This custom tap still uses the name `pcp` but as a custom tap it is distinguishable under the `performancecopilot` namespace prefix.
 
 ## License
 
