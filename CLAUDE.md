@@ -1,8 +1,19 @@
 # homebrew-pcp
 
 Personal Homebrew tap for [Performance Co-Pilot](https://pcp.io/) (PCP) on macOS. One
-cask, `Casks/pcp.rb`, wrapping upstream's official `.dmg` installer. Pushed directly to
-`main` — no fork/PR workflow, this isn't `homebrew-core`.
+cask, `Casks/pcp.rb`, wrapping upstream's official `.dmg` installer.
+
+## Workflow: issue → branch → PR
+
+Even though this is a low-traffic personal tap, changes go through the standard GitHub
+flow rather than straight to `main`:
+
+1. Open a GitHub issue describing the change (a version bump, a lint fix, whatever it
+   is) — this gives the change a paper trail and something for a PR to close.
+2. Do the work on a branch, not on `main`.
+3. Open a PR against `main` that references the issue (e.g. `Closes #N`).
+
+This repo doesn't need a fork — push branches directly and open the PR from there.
 
 ## Finding the latest upstream PCP release
 

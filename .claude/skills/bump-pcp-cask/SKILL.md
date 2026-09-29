@@ -81,6 +81,7 @@ passes clean before commit, not that you only fix what you personally introduced
 ## 7. Show the diff and stop
 
 Run `git diff` and show it to the user. Do **not** commit, push, or open a PR yourself.
-This is a personal tap (`performancecopilot/homebrew-pcp`, pushed directly to `main` —
-no fork/PR workflow needed), so the only remaining step is a direct commit, and that's
-the user's call to make, not an automatic last step of this skill.
+This tap follows the standard issue → branch → PR flow (see this repo's `CLAUDE.md`), so
+finishing the bump means: open an issue for the version bump, commit on a branch (not
+`main`), push, and open a PR referencing the issue — but that's the user's call to
+trigger, not an automatic last step of this skill.
