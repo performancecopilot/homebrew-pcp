@@ -1,8 +1,8 @@
 cask "pcp" do
-  version "7.0.4-1"
-  sha256 "fba2444517bdafa0d66399456328a31509dedc83859bb81e6ee594246f3fd6ef"
+  version "7.2.1-1"
+  sha256 "2f1d404fbb2c1f56380ac8efe84955878a8cf02ca3d6c4a66abf479e0a37579f"
 
-  url "https://github.com/performancecopilot/pcp/releases/download/#{version.sub(/-\d+$/, '')}/pcp-#{version}.dmg",
+  url "https://github.com/performancecopilot/pcp/releases/download/#{version.sub(/-\d+$/, "")}/pcp-#{version}.dmg",
       verified: "github.com/performancecopilot/pcp/"
   name "Performance Co-Pilot"
   desc "System performance analysis toolkit"
@@ -13,13 +13,15 @@ cask "pcp" do
     strategy :github_latest
   end
 
+  depends_on :macos
+
   pkg "pcp-#{version}.pkg"
 
   uninstall script: {
-              executable: "/usr/local/libexec/pcp/bin/uninstall-pcp",
-              args:       ["--force"],
-              sudo:       true,
-            }
+    executable: "/usr/local/libexec/pcp/bin/uninstall-pcp",
+    args:       ["--force"],
+    sudo:       true,
+  }
 
   caveats <<~EOS
     PCP has been installed with the following services:
