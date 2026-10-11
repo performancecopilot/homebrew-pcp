@@ -78,10 +78,21 @@ If it reports offenses, run `brew style --fix Casks/pcp.rb` and re-check. Auto-f
 is fine even though the offenses predate your version bump — the mandate is that the file
 passes clean before commit, not that you only fix what you personally introduced.
 
-## 7. Show the diff and stop
+## 7. Show the diff and get the go-ahead
 
-Run `git diff` and show it to the user. Do **not** commit, push, or open a PR yourself.
-This tap follows the standard issue → branch → PR flow (see this repo's `CLAUDE.md`), so
-finishing the bump means: open an issue for the version bump, commit on a branch (not
-`main`), push, and open a PR referencing the issue — but that's the user's call to
-trigger, not an automatic last step of this skill.
+Run `git diff` and show it to the user. Don't publish anything until they say go — the
+issue, push and PR are visible to others, so they get a confirmation first.
+
+## 8. Issue → branch → PR
+
+Once the user approves, finish the bump the way this repo's `CLAUDE.md` requires:
+
+1. Open an issue: `gh issue create --title "Bump pcp cask to <version>"` with a body
+   noting the upstream release date and asset.
+2. Create a branch (e.g. `bump-pcp-<tag>`) from `main` — never commit to `main`. The
+   uncommitted cask edit carries over with `git switch -c`.
+3. Commit the cask change with a concise message focused on why (tracking upstream
+   `<tag>`). No Claude Code footer.
+4. Push the branch and open a PR against `main` with `Closes #<issue>` in the body:
+   `gh pr create`.
+5. Report the PR URL to the user. Don't merge it.
