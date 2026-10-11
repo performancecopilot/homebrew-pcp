@@ -1,6 +1,6 @@
 cask "pcp" do
-  version "7.2.1-1"
-  sha256 "2f1d404fbb2c1f56380ac8efe84955878a8cf02ca3d6c4a66abf479e0a37579f"
+  version "7.2.2-1"
+  sha256 "3f421ca6fc7541cf469d702e8a56929de116b9684f956a5f2ea07623d38617c2"
 
   url "https://github.com/performancecopilot/pcp/releases/download/#{version.sub(/-\d+$/, "")}/pcp-#{version}.dmg",
       verified: "github.com/performancecopilot/pcp/"
